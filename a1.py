@@ -10,7 +10,10 @@ def num_buses(n):
     2
     """
     NUM_PER_BUS = 50
-    return (n / NUM_PER_BUS) + 1
+    if n % NUM_PER_BUS == 0:
+        return n / NUM_PER_BUS 
+    else:
+        return (n / NUM_PER_BUS) + 1
 
 
 def stock_price_summary(price_changes):
@@ -46,11 +49,16 @@ def swap_k(L, k):
     [5, 6, 3, 4, 1, 2]
     """
 
-    for i in range(k):
-        swap1 = L.pop(i)
-        swap2 = L.pop(-i + -1)
-        L.insert(0, swap2)
-        L.append(swap1)
+    if len(L) ==0:
+        return "Nothing to swap!"
+    elif len(L) == k:
+        return L
+    else:
+        for i in range(k):
+            swap1 = L.pop(i)
+            swap2 = L.pop(-i + -1)
+            L.insert(0, swap2)
+            L.append(swap1)
     return L
 
 
